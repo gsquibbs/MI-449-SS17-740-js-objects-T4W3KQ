@@ -62,9 +62,9 @@ var updateDisplayedJoke = function () {
 // page update functions, so that we
 // can call them all at once
 var updatePage = function () {
+  getJokes()
   updateJokesMenu()
   updateDisplayedJoke()
-  getJokes()
 }
 
 // -------
@@ -86,7 +86,7 @@ deleteButton.addEventListener('click', function () {
   var deleteJoke = document.getElementById('deleteJokeContent').value
   delete jokes[deleteJoke]
   setJokes()
-  window.alert('The joke was deleted from the collection')
+  updatePage()
 })
 
 var addButton = document.getElementById('addButton')
@@ -96,5 +96,5 @@ addButton.addEventListener('click', function () {
   var newPunchline = document.getElementById('newPunchline').value
   jokes[addJoke] = {setup: newSetup, punchline: newPunchline}
   setJokes()
-  window.alert('Your joke was added to the collection')
+  updatePage()
 })
